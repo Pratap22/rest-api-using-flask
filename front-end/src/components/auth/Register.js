@@ -19,7 +19,7 @@ const Register = () => {
     try {
       await auth.register(formData.username, formData.password);
       setErrorMessage("");
-      navigate("/login", { replace: true });
+      navigate("/signin", { replace: true });
     } catch (error) {
       if (error.response && error.response.status === 409) {
         setErrorMessage(error.response.data.message);
@@ -59,7 +59,7 @@ const Register = () => {
         <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Login Here</Link>
+        Already have an account? <Link to="/signin">Login Here</Link>
       </p>
     </div>
   );

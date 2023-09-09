@@ -34,7 +34,7 @@ const Shops = () => {
   };
 
   const handleShopClick = (id) => {
-    navigate(`/shop/${id}`);
+    navigate(`/store/${id}`);
   };
 
   const handleLogout = () => {

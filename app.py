@@ -12,8 +12,12 @@ from blacklist import BLACKLIST
 
 def create_app():
     app = Flask(__name__)
+    remote_origin = os.getenv("REMOTE_ORIGIN")
+    origins = ['http://localhost:3000']
+    if remote_origin:
+        origins.append(remote_origin)
 
-    CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
+    CORS(app, origins=origins, supports_credentials=True)
 
     app.config["PROPAGATE_EXCEPTIONS"] = True
     app.config["API_TITLE"] = "Shops REST API"

@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   let location = useLocation();
   console.log("Herr")
   if (!auth.isLoggedIn) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/signin" state={{ from: location }} replace />;
   }
 
   return children;
