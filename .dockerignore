@@ -1,0 +1,7 @@
+front-end/
+.venv/
+venv/
+env/
+*.pyc
+__pycache__/
+instance/

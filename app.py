@@ -2,6 +2,7 @@ import os
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 from resources.shop import blueprint as ShopBluePrint
 from resources.product import blueprint as ProductBluePrint
 from resources.user import blueprint as UserBluePrint
@@ -10,6 +11,8 @@ import models
 from blacklist import BLACKLIST
 
 app = Flask(__name__)
+
+CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
 
 app.config["PROPAGATE_EXCEPTIONS"] = True
 app.config["API_TITLE"] = "Shops REST API"
