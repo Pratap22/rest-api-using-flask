@@ -39,13 +39,14 @@ const apiProvider = {
       }
 
       const { data } = await axiosInstance.delete("/logout");
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      delete axiosInstance.defaults.headers.common["Authorization"];
       return data;
     } catch (error) {
       console.error(error);
       throw error;
+    } finally {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      delete axiosInstance.defaults.headers.common["Authorization"];
     }
   },
 };
@@ -77,9 +78,10 @@ function AuthProvider({ children }) {
     try {
       await apiProvider.signout();
       setLoggedIn(false);
-      callback();
     } catch (error) {
       throw error;
+    } finally {
+      callback();
     }
   };
 
